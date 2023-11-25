@@ -17,7 +17,7 @@ public record Pizza
 /// <summary>
 /// A DB Class to store and manage data in memory store
 /// </summary>y
-public class PizzaDB
+public static class PizzaDB
 {
     /// <summary>
     /// A list of type Pizza
