@@ -28,4 +28,38 @@ public class PizzaDB
         new Pizza{ Id=2, Name="Gioninos"},
         new Pizza{ Id=3, Name="Coccia House"}
     };
+
+    public static List<Pizza> GetPizzas()
+    {
+        return _pizzas;
+    }
+
+    public static Pizza ? GetPizza(int id)
+    {
+        return _pizzas.SingleOrDefault(pizza => pizza.Id == id);
+    }
+
+    public static Pizza CreatePizza(Pizza pizza)
+    {
+        _pizzas.Add(pizza);
+        return pizza;
+    }
+
+    public static Pizza UpdatePizza(Pizza update)
+    {
+        _pizzas = _pizzas.Select(pizza =>
+        {
+            if (pizza.Id == update.Id)
+            {
+                pizza.Name = update.Name;
+            }
+            return pizza;
+        }).ToList();
+        return update;
+    }
+
+    public static void RemovePizza(int id)
+    {
+        _pizzas = _pizzas.FindAll(pizza => pizza.Id != id).ToList();
+    }
 }
